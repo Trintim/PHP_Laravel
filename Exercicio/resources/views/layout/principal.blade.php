@@ -105,7 +105,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        my template
+                        Imported template
                     </div>
                 </div>
             </div>

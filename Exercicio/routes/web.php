@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::get('/', function () {
-    return view('contact.home');
+    return view('welcome');
 })->name('home');
 
-Route::resource('/contact', [ContactController::class, 'index']);
+Route::resource('/contact', ContactController::class);

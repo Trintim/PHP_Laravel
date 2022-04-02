@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('layout.principal');
+        $contacts = $this->contacts->all();
+        return view('sistema.contato.index', compact('contacts'));
     }
 
     /**
@@ -30,7 +32,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('sistema.contato.crud');
     }
 
     /**
@@ -39,9 +41,11 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+        $datas = $request->all();
+        $this->contacts->create($datas);
+        return redirect(route('contact.index'))->with('success', 'Contato criado com sucesso!');
     }
 
     /**
@@ -52,7 +56,8 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = $this->contacts->find($id);
+        return json_encode($contact);
     }
 
     /**
@@ -63,7 +68,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = $this->contacts->find($id);
+        return view('sistema.contato.crud', compact('contact'));
     }
 
     /**
@@ -73,9 +79,12 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactRequest $request, $id)
     {
-        //
+        $datas = $request->all();
+        $contact = $this->contacts->find($id);
+        $contact->update($datas);
+        return redirect(route('contact.index'))->with('success', 'Contato atualizado com sucesso!');
     }
 
     /**
@@ -86,6 +95,8 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = $this->contacts->find($id);
+        $contact->delete();
+        return redirect(route('contact.index'))->with('success', 'Contato excluido com sucesso!');
     }
 }
