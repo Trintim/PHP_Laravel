@@ -57,7 +57,7 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
-                                    <img src="" alt="logo" class="rounded-circle"> <span class="ml-1 pro-user-name">Ola<i class="mdi mdi-chevron-down"></i> </span>
+                                    <span class="ml-1 pro-user-name">Ola<i class="mdi mdi-chevron-down"></i> </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 
