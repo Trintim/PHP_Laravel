@@ -26,7 +26,7 @@
             </div>
         </div>
 
-
+        @include('components.alerts')
 
         <div class="row">
             <div class="col-12">
@@ -95,6 +95,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                            <a type="button" title="Editar Contato" class="btn btn-warning" href="{{ isset($contact) ? route('contact.edit', $contact->id) : route('contact.index')}}"><i class="dripicons-pencil"></i></a>
+                            <button type="button" title="Apagar Contato" class="btn btn-danger" data-toggle="modal" data-target="#modal-excluir"  data-id="{{isset($contact) ? $contact->id : ''}}"><i class="dripicons-trash"></i></button>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>

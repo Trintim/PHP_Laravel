@@ -44,6 +44,11 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         $datas = $request->all();
+        $contact = $this->contacts->where('contact', $datas['contact'])->where('email', $datas['email'])->first();
+
+        if(isset($contact)){
+            return redirect(route('contact.index'))->with('danger', 'Contato não pode ser criado por já existir email ou numero de contato');
+        }
         $this->contacts->create($datas);
         return redirect(route('contact.index'))->with('success', 'Contato criado com sucesso!');
     }

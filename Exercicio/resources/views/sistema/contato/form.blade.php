@@ -4,7 +4,9 @@
         <div>
             <input type="text" id="name" name="name" value="{{ isset($contact) ? $contact->name : old('name') }}" class="form-control @error('name') is-invalid @enderror" placeholder="Ex: Victor Trintim">
             @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    <i class="fi-circle-cross"></i><strong>{{$message}}</strong>
+                </span>
             @enderror
         </div>
     </div>
