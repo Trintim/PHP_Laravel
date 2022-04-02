@@ -25,7 +25,7 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5', 'string',
-            'contact' => 'required|max:9', 'unique:contacts,contact',
+            'contact' => 'required|max:12|min:9', 'unique:contacts,contact',
             'email' => 'email', 'unique:contacts,email'
         ];
     }
@@ -36,7 +36,8 @@ class ContactRequest extends FormRequest
             'required' => 'Campo :attribute deve ser preenchido',
             'name.min' => 'Campo nome deve ter no minino 5 caracteres',
             'email.email' => 'O email informado não e valido',
-            'contact.max' => 'Campo deve ter no maximo 9 caracteres',
+            'contact.max' => 'Campo deve ter no maximo 12 caracteres',
+            'contact.min' => 'Campo deve ter no minimo 9 caracteres',
         ];
     }
 }
